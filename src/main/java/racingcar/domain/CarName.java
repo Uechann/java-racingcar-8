@@ -1,15 +1,8 @@
 package racingcar.domain;
 
-public class CarName {
-    private final String value;
-
-    public CarName(String value) {
+public record CarName(String value) {
+    public CarName {
         validate(value);
-        this.value = value;
-    }
-
-    public String value() {
-        return value;
     }
 
     private void validate(String value) {
