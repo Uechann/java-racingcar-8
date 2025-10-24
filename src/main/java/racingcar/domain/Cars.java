@@ -13,10 +13,12 @@ public class Cars {
         this.carList = carList;
     }
 
+    // 자동차 리스트 조회
     public List<Car> getCars() {
         return carList;
     }
 
+    // 이름으로 자동차 조회
     public Car findByName(String name) {
         return carList.stream()
                 .filter(car -> car.getName().value().equals(name))

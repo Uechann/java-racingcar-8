@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+
     private CarName name;
 
     public Car() {}
@@ -12,6 +13,4 @@ public class Car {
     public CarName getName() {
         return name;
     }
-
-
 }
