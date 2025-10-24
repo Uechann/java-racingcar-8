@@ -30,9 +30,6 @@ public class CarFactoryTest {
         // Given
         String[] input = {"pobi", "woni", "pobi"};
 
-        // When
-        Cars cars = carFactory.createCars(input);
-
         // Then
         assertThatThrownBy(() -> carFactory.createCars(input))
                 .isInstanceOf(IllegalArgumentException.class);
