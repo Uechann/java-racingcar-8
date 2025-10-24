@@ -19,8 +19,7 @@ public class InputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", "   ", "pobi;woni;jun", "pobi woni jun", "pobi,,jun", "pobi,woni,", ",pobi,woni"})
-    void 입력형식_검증_실패_테스트() {
-        String input = "pobi woni jun"; // 잘못된 형식
+    void 입력형식_검증_실패_테스트(String input) {
 
         assertThatThrownBy(() -> InputValidator.validateInputFormat(input))
                 .isInstanceOf(IllegalArgumentException.class);
