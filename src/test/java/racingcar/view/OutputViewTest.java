@@ -3,6 +3,8 @@ package racingcar.view;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.CarName;
 import racingcar.domain.Cars;
@@ -54,6 +56,34 @@ public class OutputViewTest {
         sb.append("jun : ").append("\n");
         String expected = sb.toString();
 
+        assertThat(outputStream.toString()).isEqualTo(expected);
+    }
+
+    // 최종 우승자 출력 테스트
+    void 최종_우승자_1명_출력_테스트() {
+        // given
+        Car car1 = new Car(new CarName("pobi"));
+
+        // when
+        OutputView outputView = new OutputView();
+        outputView.printWinners(car1);
+
+        // then
+        String expected = "최종 우승자 : pobi";
+        assertThat(outputStream.toString()).isEqualTo(expected);
+    }
+
+    void 최종_우승자_2명이상_출력_테스트() {
+        // given
+        Car car1 = new Car(new CarName("pobi"));
+        Car car2 = new Car(new CarName("woni"));
+
+        // when
+        OutputView outputView = new OutputView();
+        outputView.printWinners(List.of(car1, car2));
+
+        // then
+        String expected = "최종 우승자 : pobi, woni";
         assertThat(outputStream.toString()).isEqualTo(expected);
     }
 }
