@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OutputViewTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    private final StringBuilder sb = new StringBuilder();
 
     @BeforeEach
     void setUp() {
@@ -32,7 +33,7 @@ public class OutputViewTest {
         // given
         Car car1 = new Car(new CarName("pobi"));
         Car car2 = new Car(new CarName("woni"));
-        Car car3 = new Car(new CarName("woni"));
+        Car car3 = new Car(new CarName("jun"));
         Cars cars = new Cars(List.of(car1, car2, car3));
 
         car1.moveForward();
@@ -46,9 +47,12 @@ public class OutputViewTest {
         outputView.printCarsPosition(cars);
 
         // then
-        String expected = "pobi : --\n" +
-                          "woni : -\n" +
-                          "woni : \n";
+        sb.append("\n");
+        sb.append("실행 결과").append("\n");
+        sb.append("pobi : --").append("\n");
+        sb.append("woni : -").append("\n");
+        sb.append("jun : ").append("\n");
+        String expected = sb.toString();
 
         assertThat(outputStream.toString()).isEqualTo(expected);
     }
