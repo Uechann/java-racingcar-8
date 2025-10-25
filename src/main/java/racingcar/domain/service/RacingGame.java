@@ -23,10 +23,8 @@ public class RacingGame {
             outputView.printCarsPosition(cars);
         }
 
-        // 우승자 판단
-        List<Car> winners = determineWinners(cars);
-        // 우승자 출력
-        outputView.printWinners(winners);
+        // 우승자 판단 후 출력
+        outputView.printWinners(determineWinners(cars));
     }
 
     private void attemptOneTry(Car car) {
