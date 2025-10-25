@@ -5,12 +5,10 @@ import java.util.List;
 
 public class CarFactory {
 
-    public CarFactory() {
-    }
+    public CarFactory() {}
 
     // 자동차 생성 메서드
     public Cars createCars(String[] names) {
-
         // 중복 이름 검사
         validateDuplicateNames(names);
 

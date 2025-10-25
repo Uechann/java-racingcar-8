@@ -26,12 +26,12 @@ public class RacingCarController {
         InputValidator.validateInputFormat(carNamesInput);
         String[] carNames = InputParser.parseStringToArray(carNamesInput);
 
-        // 자동차 객체 생성
-        Cars cars = carFactory.createCars(carNames);
-
         // 시도 횟수 입력 받기
         String attemptCountInput = inputView.inputAttemptCount();
         Attempt attempt = new Attempt(attemptCountInput);
+
+        // 자동차 객체들 생성
+        Cars cars = carFactory.createCars(carNames);
 
         // 게임 실행
         racingGame.run(cars, attempt);
