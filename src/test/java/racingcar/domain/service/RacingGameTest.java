@@ -3,6 +3,7 @@ package racingcar.domain.service;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.CarName;
+import racingcar.domain.Cars;
 
 import java.util.List;
 
@@ -29,5 +30,54 @@ public class RacingGameTest {
         // 랜덤 숫자에 따라 자동차가 움직였는지 확인
         assertThat(car1.getPosition()).isEqualTo(1); // MOVING_FORWARD일 때 위치 증가
         assertThat(car2.getPosition()).isEqualTo(0); // STOP일 때 위치 유지
+    }
+
+    // 우승자 판단 테스트 (1명)
+    @Test
+    void 우승자_판단_테스트() {
+        // Given
+        Car car1 = new Car(new CarName("pobi"));
+        Car car2 = new Car(new CarName("woni"));
+        Car car3 = new Car(new CarName("jun"));
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        // 각 자동차의 위치 설정
+        car1.judgeMovement(MOVING_FORWARD); // 위치 1
+        car2.judgeMovement(STOP);           // 위치 0
+        car3.judgeMovement(MOVING_FORWARD); // 위치 1
+        car3.judgeMovement(MOVING_FORWARD); // 위치 2
+
+        // When
+        List<Car> winners = racingGame.determineWinners(cars);
+
+        // Then
+        // 우승자가 올바르게 판단되었는지 확인
+        assertThat(winners.size()).isEqualTo(1); // 우승자 1명
+        assertThat(winners.getFirst()).isEqualTo(car3); // jun이 우승
+    }
+
+    // 우승자 판단 테스트 (여러명)
+    @Test
+    void 우승자_판단_테스트_여러명() {
+        // Given
+        Car car1 = new Car(new CarName("pobi"));
+        Car car2 = new Car(new CarName("woni"));
+        Car car3 = new Car(new CarName("jun"));
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        // 각 자동차의 위치 설정
+        car1.judgeMovement(MOVING_FORWARD); // 위치 1
+        car1.judgeMovement(MOVING_FORWARD); // 위치 2
+        car2.judgeMovement(MOVING_FORWARD); // 위치 1
+        car2.judgeMovement(MOVING_FORWARD); // 위치 2
+        car3.judgeMovement(STOP);           // 위치 0
+
+        // When
+        List<Car> winners = racingGame.determineWinners(cars);
+
+        // Then
+        // 우승자가 올바르게 판단되었는지 확인
+        assertThat(winners.size()).isEqualTo(2); // 우승자 2명
+        assertThat(winners).contains(car1, car2);   // pobi와 woni가 공동 우승
     }
 }
