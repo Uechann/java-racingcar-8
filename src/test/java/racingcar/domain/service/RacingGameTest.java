@@ -42,10 +42,10 @@ public class RacingGameTest {
         Cars cars = new Cars(List.of(car1, car2, car3));
 
         // 각 자동차의 위치 설정
-        car1.judgeMovement(MOVING_FORWARD); // 위치 1
-        car2.judgeMovement(STOP);           // 위치 0
-        car3.judgeMovement(MOVING_FORWARD); // 위치 1
-        car3.judgeMovement(MOVING_FORWARD); // 위치 2
+        racingGame.judgeMovement(car1, MOVING_FORWARD); // 위치 1
+        racingGame.judgeMovement(car2, STOP);           // 위치 0
+        racingGame.judgeMovement(car3, MOVING_FORWARD); // 위치 1
+        racingGame.judgeMovement(car3, MOVING_FORWARD); // 위치 2
 
         // When
         List<Car> winners = racingGame.determineWinners(cars);
@@ -66,11 +66,11 @@ public class RacingGameTest {
         Cars cars = new Cars(List.of(car1, car2, car3));
 
         // 각 자동차의 위치 설정
-        car1.judgeMovement(MOVING_FORWARD); // 위치 1
-        car1.judgeMovement(MOVING_FORWARD); // 위치 2
-        car2.judgeMovement(MOVING_FORWARD); // 위치 1
-        car2.judgeMovement(MOVING_FORWARD); // 위치 2
-        car3.judgeMovement(STOP);           // 위치 0
+        racingGame.judgeMovement(car1, MOVING_FORWARD); // 위치 1
+        racingGame.judgeMovement(car1, MOVING_FORWARD); // 위치 2
+        racingGame.judgeMovement(car2, MOVING_FORWARD); // 위치 1
+        racingGame.judgeMovement(car2, MOVING_FORWARD); // 위치 2
+        racingGame.judgeMovement(car3, STOP);           // 위치 0
 
         // When
         List<Car> winners = racingGame.determineWinners(cars);

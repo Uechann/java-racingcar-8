@@ -6,6 +6,8 @@ import racingcar.domain.Cars;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingGame {
 
     private final OutputView outputView = new OutputView();
@@ -31,5 +33,16 @@ public class RacingGame {
         if (num >= MOVEMENT_CRITERIA) {
             car.moveForward();
         }
+    }
+
+    public List<Car> determineWinners(Cars cars) {
+        int maxPosition = cars.getCars().stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.getCars().stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
     }
 }
