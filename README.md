@@ -62,6 +62,7 @@ TDD 개발을 목표로 잡았고 TDD 싸이클(RED-GREEN-REFACTOR)를 최대한
   - pobi 입력시 CarName 객체 생성 후 해당 값이 pobi인지 확인
   - pobi,woni,jun 입력 시, 자동차 3대 생성 후 각각의 이름이 pobi, woni, jun 인지 확인
   - 시도할 횟수로 5 입력 시, 5가 정상적으로 입력되는지 확인
+  - pobi,woni,pobi 입력시 중복 이름의 경우 IllegalArgumentException 발생 확인
   - 빈 값 입력 시, `IllegalArgumentException` 발생 확인
   - 시도할 횟수로 숫자가 아닌 값 입력 시, `IllegalArgumentException` 발생 확인
   - 시도할 횟수로 음수 입력 시, `IllegalArgumentException` 발생 확인
@@ -70,16 +71,15 @@ TDD 개발을 목표로 잡았고 TDD 싸이클(RED-GREEN-REFACTOR)를 최대한
 ### 2. random 숫자 생성 기능
 - 기능 설명 : 0에서 9사이의 무작위 숫자를 생성한다.
 - 세부 구현
-  - RandomNumberGenerator 인터페이스 생성
-  - RandomNumberGenerator 인터페이스를 구현하는 DefaultRandomNumberGenerator 클래스 생성
-  - DefaultRandomNumberGenerator 클래스에서 0에서 9사이의 무작위 숫자 생성 메서드 구현
+  - RandomNumberGenerator 클래스 생성
+  - RandomNumberGenerator 클래스에서 0에서 9사이의 무작위 숫자 생성 메서드 구현
 - 테스트 케이스
   - 생성된 숫자가 0 이상 9 이하인지 확인하는 테스트 케이스
 
-### 3. 자동차 기능
+### 3. 자동차 레이싱 기능
 - 기능 설명 : 자동차가 전진 또는 멈춤을 판단하고, 이동 거리를 관리한다.
 - 세부 구현
-  - RandomNumberGenerator 인터페이스 주입 받고 각 자동차가 전진 또는 멈춤을 판단하는 메서드 구현
+  - RandomNumberGenerator를 통해서 생성된 숫자를 통해서 각 자동차가 전진 또는 멈춤을 판단하는 메서드 구현
     - RandomNumberGenerator에서 생성된 숫자가 4 이상일 경우 전진, 그 외에는 멈춤
   - Car 클래스에 이동 거리 속성 추가
     - 기본 값 0
