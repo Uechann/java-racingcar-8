@@ -22,8 +22,8 @@ public class RacingGameTest {
 
         // When
         // 각 자동차에 대해 랜덤 숫자에 따른 움직임 판단
-        racingGame.jundgeMovement(car1, MOVING_FORWARD);
-        racingGame.jundgeMovement(car2, STOP);
+        racingGame.judgeMovement(car1, MOVING_FORWARD);
+        racingGame.judgeMovement(car2, STOP);
 
         // Then
         // 랜덤 숫자에 따라 자동차가 움직였는지 확인

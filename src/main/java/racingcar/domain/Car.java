@@ -3,6 +3,7 @@ package racingcar.domain;
 public class Car {
 
     private CarName name;
+    private int position;
 
     public Car() {}
 
@@ -12,5 +13,13 @@ public class Car {
 
     public CarName getName() {
         return name;
+    }
+
+    public void moveForward() {
+        position++;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
