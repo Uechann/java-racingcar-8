@@ -15,12 +15,18 @@ public class RacingGame {
 
     // 게임 실행
     public void run(Cars cars, Attempt attempt) {
+
         for (int i = 0; i < attempt.value(); i++) {
             cars.getCars().forEach(this::attemptOneTry);
 
             // 각 시도마다 자동차 위치 출력
             outputView.printCarsPosition(cars);
         }
+
+        // 우승자 판단
+        List<Car> winners = determineWinners(cars);
+        // 우승자 출력
+        outputView.printWinners(winners);
     }
 
     private void attemptOneTry(Car car) {
