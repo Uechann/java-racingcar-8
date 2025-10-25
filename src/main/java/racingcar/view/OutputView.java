@@ -1,6 +1,9 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
+
+import java.util.List;
 
 public class OutputView {
 
@@ -8,7 +11,7 @@ public class OutputView {
 
     // 자동차들의 현재 위치를 출력하는 메서드
     public void printCarsPosition(Cars cars) {
-
+        sb.setLength(0);
         sb.append("\n").append("실행 결과").append("\n");
 
         cars.getCars().forEach(car -> {
@@ -20,6 +23,21 @@ public class OutputView {
 
             sb.append("\n");
         });
+        System.out.print(sb);
+    }
+
+    // 최종 우승자 출력 메서드
+    public void printWinners(List<Car> winners) {
+        sb.setLength(0);
+        sb.append("\n").append("최종 우승자 : ");
+
+        for (int i = 0; i < winners.size(); i++) {
+            sb.append(winners.get(i).getName().value());
+
+            if (i < winners.size() - 1) {
+                sb.append(", ");
+            }
+        }
         System.out.print(sb);
     }
 }

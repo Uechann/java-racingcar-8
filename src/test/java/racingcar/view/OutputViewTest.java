@@ -60,19 +60,21 @@ public class OutputViewTest {
     }
 
     // 최종 우승자 출력 테스트
+    @Test
     void 최종_우승자_1명_출력_테스트() {
         // given
         Car car1 = new Car(new CarName("pobi"));
 
         // when
         OutputView outputView = new OutputView();
-        outputView.printWinners(car1);
+        outputView.printWinners(List.of(car1));
 
         // then
-        String expected = "최종 우승자 : pobi";
+        String expected = "\n최종 우승자 : pobi";
         assertThat(outputStream.toString()).isEqualTo(expected);
     }
 
+    @Test
     void 최종_우승자_2명이상_출력_테스트() {
         // given
         Car car1 = new Car(new CarName("pobi"));
@@ -83,7 +85,7 @@ public class OutputViewTest {
         outputView.printWinners(List.of(car1, car2));
 
         // then
-        String expected = "최종 우승자 : pobi, woni";
+        String expected = "\n최종 우승자 : pobi, woni";
         assertThat(outputStream.toString()).isEqualTo(expected);
     }
 }
