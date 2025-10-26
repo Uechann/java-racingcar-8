@@ -9,11 +9,15 @@ public class OutputView {
 
     static StringBuilder sb = new StringBuilder();
 
+    public void printResultHeader() {
+        System.out.print("\n실행 결과");
+    }
+
     // 자동차들의 현재 위치를 출력하는 메서드
     public void printCarsPosition(Cars cars) {
         sb.setLength(0);
-        sb.append("\n").append("실행 결과").append("\n");
 
+        sb.append("\n");
         cars.getCars().forEach(car -> {
             sb.append(car.getName().value()).append(" : ");
 

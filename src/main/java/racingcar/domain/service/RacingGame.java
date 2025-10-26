@@ -16,6 +16,7 @@ public class RacingGame {
     // 게임 실행
     public void run(Cars cars, Attempt attempt) {
 
+        outputView.printResultHeader();
         for (int i = 0; i < attempt.value(); i++) {
             cars.getCars().forEach(this::attemptOneTry);
 
