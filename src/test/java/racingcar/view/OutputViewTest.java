@@ -69,7 +69,7 @@ public class OutputViewTest {
         Cars cars = new Cars(List.of(car1));
 
         // when
-        List<String> winners = Cars.getWinners();
+        List<String> winners = cars.getWinners();
         OutputView outputView = new OutputView();
         outputView.printWinners(winners);
 
@@ -86,7 +86,7 @@ public class OutputViewTest {
         Cars cars = new Cars(List.of(car1, car2));
 
         // when
-        List<String> winners = Cars.getWinners();
+        List<String> winners = cars.getWinners();
         OutputView outputView = new OutputView();
         outputView.printWinners(winners);
 

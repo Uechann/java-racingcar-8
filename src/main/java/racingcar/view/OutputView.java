@@ -28,12 +28,12 @@ public class OutputView {
     }
 
     // 최종 우승자 출력 메서드
-    public void printWinners(List<Car> winners) {
+    public void printWinners(List<String> winners) {
         sb.setLength(0);
         sb.append("\n").append("최종 우승자 : ");
 
         for (int i = 0; i < winners.size(); i++) {
-            sb.append(winners.get(i).getName().value());
+            sb.append(winners.get(i));
 
             if (i < winners.size() - 1) {
                 sb.append(", ");

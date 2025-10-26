@@ -6,9 +6,6 @@ public class Cars {
 
     private List<Car> carList;
 
-    public Cars() {
-    }
-
     public Cars(List<Car> carList) {
         this.carList = carList;
     }
@@ -24,5 +21,18 @@ public class Cars {
                 .filter(car -> car.getName().value().equals(name))
                 .findFirst()
                 .get();
+    }
+
+    // 자동차들의 우승자 조회
+    public List<String> getWinners() {
+        int maxPosition = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(car -> car.getName().value())
+                .toList();
     }
 }
