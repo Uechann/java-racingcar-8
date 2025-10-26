@@ -41,12 +41,14 @@ public class OutputViewTest {
         car1.moveForward();
         car1.moveForward();
         car2.moveForward();
-
         // car1: 2, car2: 1, car3: 0
-        OutputView outputView = new OutputView();
 
         // when
-        outputView.printCarsPosition(cars);
+        OutputView outputView = new OutputView();
+        List<CarStateDto> carStates = cars.stream()
+                .map(CarStateDto::from)
+                .toList();
+        outputView.printCarsPosition(carStates);
 
         // then
         sb.append("\n");
@@ -63,10 +65,12 @@ public class OutputViewTest {
     void 최종_우승자_1명_출력_테스트() {
         // given
         Car car1 = new Car(new CarName("pobi"));
+        Cars cars = new Cars(List.of(car1));
 
         // when
+        List<String> winners = Cars.getWinners();
         OutputView outputView = new OutputView();
-        outputView.printWinners(List.of(car1));
+        outputView.printWinners(winners);
 
         // then
         String expected = "\n최종 우승자 : pobi";
@@ -78,10 +82,12 @@ public class OutputViewTest {
         // given
         Car car1 = new Car(new CarName("pobi"));
         Car car2 = new Car(new CarName("woni"));
+        Cars cars = new Cars(List.of(car1, car2));
 
         // when
+        List<String> winners = Cars.getWinners();
         OutputView outputView = new OutputView();
-        outputView.printWinners(List.of(car1, car2));
+        outputView.printWinners(winners);
 
         // then
         String expected = "\n최종 우승자 : pobi, woni";
