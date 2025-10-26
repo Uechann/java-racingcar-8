@@ -50,7 +50,6 @@ public class OutputViewTest {
 
         // then
         sb.append("\n");
-        sb.append("실행 결과").append("\n");
         sb.append("pobi : --").append("\n");
         sb.append("woni : -").append("\n");
         sb.append("jun : ").append("\n");
