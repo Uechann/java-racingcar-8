@@ -34,18 +34,4 @@ public class CarFactoryTest {
         assertThatThrownBy(() -> carFactory.createCars(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    void 자동차_이름으로_검색_테스트() {
-        // Given
-        String[] input = {"pobi", "woni", "jun"};
-        Cars cars = carFactory.createCars(input);
-
-        // When
-        Car car = cars.findByName("woni");
-
-        // Then
-        assertThat(car).isNotNull();
-        assertThat(car.getName().value()).isEqualTo("woni");
-    }
 }

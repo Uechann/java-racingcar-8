@@ -15,14 +15,6 @@ public class Cars {
         return carList;
     }
 
-    // 이름으로 자동차 조회
-    public Car findByName(String name) {
-        return carList.stream()
-                .filter(car -> car.getName().value().equals(name))
-                .findFirst()
-                .get();
-    }
-
     // 자동차들의 우승자 조회
     public List<String> getWinners() {
         int maxPosition = carList.stream()
