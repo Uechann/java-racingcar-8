@@ -19,7 +19,7 @@ public class InputValidatorTest {
             "pobi,woni,ju]n", "pobi,woni,ju|n", "pobi,woni,ju\\n", "pobi,woni,ju:n",
             "pobi,woni,ju;n", "pobi,woni,ju\"n", "pobi,woni,ju'n", "pobi,woni,ju<n",
             "pobi,woni,ju>n", "pobi,woni,ju,n", "pobi,woni,ju.n", "pobi,woni,ju?n",
-            "pobi,woni,ju/n"
+            "pobi,woni,ju/n", "의찬,으찬,이찬", "포비,워니,준@", "123,456,789", "나의찬,너의찬,우리의찬"
     })
     void 입력형식_검증_테스트(String input) {
         boolean isValid = InputValidator.validateInputFormat(input);
