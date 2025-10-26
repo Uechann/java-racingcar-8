@@ -28,10 +28,6 @@ final class FalseStrategy implements MovingStrategy {
 
 public class RacingGameTest {
 
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
-    private final RacingGame racingGame = new RacingGame();
-
     @Test
     void 전략이_true_false일때_자동차_움직임_테스트() {
         // Given
