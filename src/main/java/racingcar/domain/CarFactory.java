@@ -5,8 +5,6 @@ import java.util.List;
 
 public class CarFactory {
 
-    public CarFactory() {}
-
     // 자동차 생성 메서드
     public Cars createCars(String[] names) {
         // 중복 이름 검사
@@ -18,15 +16,7 @@ public class CarFactory {
         return new Cars(carList);
     }
 
-    // 자동차 리스트 생성 메서드 분리
-    private static List<Car> createCarList(String[] names) {
-        return Arrays.stream(names)
-                .map(CarName::new)
-                .map(Car::new)
-                .toList();
-    }
-
-    // 중복 이름 검사
+    // 중복 이름 검사 메서드
     private void validateDuplicateNames(String[] names) {
         Long distinctCount = Arrays.stream(names)
                 .distinct()
@@ -36,5 +26,13 @@ public class CarFactory {
         if (distinctCount != names.length) {
             throw new IllegalArgumentException("중복된 이름은 허용되지 않습니다.");
         }
+    }
+
+    // 자동차 리스트 생성 메서드 분리
+    private static List<Car> createCarList(String[] names) {
+        return Arrays.stream(names)
+                .map(CarName::new)
+                .map(Car::new)
+                .toList();
     }
 }
