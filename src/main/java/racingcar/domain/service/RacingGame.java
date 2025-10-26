@@ -13,7 +13,6 @@ import java.util.List;
 public class RacingGame {
 
     private final OutputView outputView = new OutputView();
-    private static final int MOVEMENT_CRITERIA = 4;
 
     // 게임 실행
     public void run(Cars cars, Attempt attempt) {
