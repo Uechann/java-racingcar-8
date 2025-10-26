@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.CarName;
 import racingcar.domain.Cars;
+import racingcar.dto.CarStateResultDto;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -45,8 +46,8 @@ public class OutputViewTest {
 
         // when
         OutputView outputView = new OutputView();
-        List<CarStateDto> carStates = cars.stream()
-                .map(CarStateDto::from)
+        List<CarStateResultDto> carStates = cars.getCars().stream()
+                .map(CarStateResultDto::from)
                 .toList();
         outputView.printCarsPosition(carStates);
 

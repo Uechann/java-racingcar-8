@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.dto.CarStateResultDto;
 
 import java.util.List;
 
@@ -14,19 +15,15 @@ public class OutputView {
     }
 
     // 자동차들의 현재 위치를 출력하는 메서드
-    public void printCarsPosition(Cars cars) {
+    public void printCarsPosition(List<CarStateResultDto> results) {
         sb.setLength(0);
-
         sb.append("\n");
-        cars.getCars().forEach(car -> {
-            sb.append(car.getName().value()).append(" : ");
 
-            // 현재 위치만큼 '-' 출력
-            int position = car.getPosition();
-            sb.append("-".repeat(position));
-
-            sb.append("\n");
+        results.forEach(result -> {
+            sb.append(result.name()).append(" : ");
+            sb.append(result.positionVisual()).append("\n");
         });
+
         System.out.print(sb);
     }
 
