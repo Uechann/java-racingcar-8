@@ -39,10 +39,4 @@ public class RacingGame {
     private void attemptOneTry(Car car) {
         car.judgeAndMove(new RandomMovingStrategy(new RandomNumberGenerator()));
     }
-
-    public void judgeMovement(Car car, int num) {
-        if (num >= MOVEMENT_CRITERIA) {
-            car.moveForward();
-        }
-    }
 }
