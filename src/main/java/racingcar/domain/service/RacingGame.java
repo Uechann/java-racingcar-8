@@ -3,6 +3,7 @@ package racingcar.domain.service;
 import racingcar.domain.Attempt;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.strategy.RandomMovingStrategy;
 import racingcar.dto.CarStateResultDto;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
@@ -36,9 +37,7 @@ public class RacingGame {
     }
 
     private void attemptOneTry(Car car) {
-        // 랜덤 숫자 생성 후 판단
-        int num = RandomNumberGenerator.generate();
-        judgeMovement(car, num);
+        car.judgeAndMove(new RandomMovingStrategy(new RandomNumberGenerator()));
     }
 
     public void judgeMovement(Car car, int num) {

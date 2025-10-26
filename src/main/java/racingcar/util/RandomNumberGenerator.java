@@ -2,9 +2,10 @@ package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
 
-    public static int generate() {
-        return Randoms.pickNumberInRange(0,9);
+    @Override
+    public int generate() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }

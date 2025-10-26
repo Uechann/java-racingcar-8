@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.CarName;
 import racingcar.domain.Cars;
+import racingcar.domain.strategy.MovingStrategy;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+// 테스트용 고정 true 전략
 final class TrueStrategy implements MovingStrategy {
     @Override
     public boolean movable() {
@@ -16,6 +18,7 @@ final class TrueStrategy implements MovingStrategy {
     }
 }
 
+// 테스트용 고정 false 전략
 final class FalseStrategy implements MovingStrategy {
     @Override
     public boolean movable() {
@@ -53,8 +56,8 @@ public class RacingGameTest {
         Car car2 = new Car(new CarName("woni"));
 
         // When
-        car1.moveForward(new TrueStrategy()); // true 전략으로 이동
-        car2.moveForward(new FalseStrategy()); // false 전략으로 이동
+        car1.judgeAndMove(new TrueStrategy()); // true 전략으로 이동
+        car2.judgeAndMove(new FalseStrategy()); // false 전략으로 이동
 
         // Then
         assertThat(car1.getPosition()).isEqualTo(1); // true 전략일 때 위치 증가
