@@ -76,6 +76,13 @@ TDD 개발을 목표로 잡았고 TDD 싸이클(RED-GREEN-REFACTOR)를 최대한
 - 테스트 케이스
   - 생성된 숫자가 0 이상 9 이하인지 확인하는 테스트 케이스
 
+### 2-1. NumberGenerator 인터페이스 분리
+- 기능 설명 : RandomNumberGenerator 클래스가 NumberGenerator를 통해 무작위 숫자를 생성하도록 변경한다.
+- 세부 구현
+  - NumberGenerator 인터페이스 생성
+    - int generate() 메서드 선언
+  - RandomNumberGenerator 클래스가 NumberGenerator 인터페이스를 구현하도록 변경
+
 ### 3. 자동차 레이싱 기능
 - 기능 설명 : 자동차가 전진 또는 멈춤을 판단하고, 이동 거리를 관리한다.
 - 세부 구현
@@ -88,6 +95,14 @@ TDD 개발을 목표로 잡았고 TDD 싸이클(RED-GREEN-REFACTOR)를 최대한
 - 테스트 케이스
   - RandomNumberGenerator에서 4 이상 숫자 반환 시, 해당 자동차의 이동 거리가 1 증가하는지 확인한다.
   - RandomNumberGenerator에서 3 이하 숫자 반환 시, 해당 자동차의 이동 거리가 증가하지 않는지 확인한다.
+
+### 3-1. MovingStrategy 인터페이스 분리
+- 기능 설명 : 자동차의 이동 판단 로직을 MoveStrategy 인터페이스로 분리
+- 세부 구현
+  - MoveStrategy 인터페이스 생성
+    - boolean movable() 메서드 선언
+  - 기존의 자동차 이동 판단 로직을 MoveStrategy 인터페이스를 구현하는 클래스(예: RandomMovingStrategy)로 이동
+  - Car 클래스가 MoveStrategy를 통해 이동 판단을 하도록 변경
 
 ### 4. 각 횟수 마다 자동차 이동거리 출력 기능
 - 기능 설명 : 각 시도 횟수마다 모든 자동차의 이동 거리를 출력한다.
@@ -119,3 +134,4 @@ TDD 개발을 목표로 잡았고 TDD 싸이클(RED-GREEN-REFACTOR)를 최대한
 - 테스트 케이스
   - 우승자가 한명일 경우, 올바르게 출력되는지 확인
   - 우승자가 여러명일 경우, 올바르게 쉼표(,)로 구분되어 출력되는지 확인
+
