@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
 import racingcar.dto.CarStateResultDto;
 
 import java.util.List;
